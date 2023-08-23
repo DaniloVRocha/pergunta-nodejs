@@ -22,10 +22,17 @@
                 <hr>
                 <h1>Respostas</h1>
                 <hr>
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <h3>Responder Pergunta</h3>
+                <% respostas.forEach(resposta => { %>
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <p><%=resposta.corpo %></p>
+                        </div>
                     </div>
+                <% }); %>
+                <hr>
+                <h3>Responder Pergunta</h3>
+                <hr>
+                <div class="card mt-4">
                     <div class="card-body">
                         <form method="POST" action="/responder">
                             <div class="mb-3">
