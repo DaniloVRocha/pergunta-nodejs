@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const connection = require("./database/database");
 const Pergunta = require('./database/pergunta');
+const Resposta = require('./database/Resposta');
 
 connection
     .authenticate()
@@ -61,6 +62,17 @@ app.get("/pergunta/:id", (req, res) => {
         } else {
             res.redirect("/")
         }
+    })
+})
+
+app.post('/responder', (req, res) => {
+    var corpo = req.body.corpo;
+    var perguntaId = req.body.perguntaId;
+        Resposta.create({
+        corpo: corpo,
+        perguntaId: parseInt(perguntaId)
+    }).then(() => {
+        res.redirect(`/pergunta/${perguntaId}`)
     })
 })
 

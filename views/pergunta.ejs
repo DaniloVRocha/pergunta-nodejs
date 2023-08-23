@@ -1,22 +1,42 @@
 <%- include('./partials/header.ejs') %>
-<body>
-    <%- include('./partials/navbar.ejs') %>
-    <div class="container">
-        <a href="/"><button class="btn btn-danger mt-4">Voltar</button></a>
-        <hr>
-        <h1>Pergunta</h1>
-        <hr>
-        <div class="card mt-4">
-            <div class="card-header">
-                <h3><%=pergunta.titulo %></h3>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+            <div class="container">
+                <a href="/"><button class="btn btn-danger mt-4">Voltar</button></a>
+                <hr>
+                <h1>Pergunta</h1>
+                <hr>
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3>
+                            <%=pergunta.titulo %>
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            <%=pergunta.descricao %>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <h1>Respostas</h1>
+                <hr>
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3>Responder Pergunta</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/responder">
+                            <div class="mb-3">
+                                <label class="form-label">Digite sua resposta</label>
+                                <textarea class="form-control" name="corpo" rows="3"></textarea>
+                            </div>
+                            <input type="hidden" name="perguntaId" value="<%=pergunta.id %>">
+                            <button type="submit" class="btn btn-success">Enviar Resposta</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <p><%=pergunta.descricao %></p>
-            </div>
-        </div>
-        <hr>
-        <h1>Respostas</h1>
-        <hr>
-    </div>
-</body>
-<%- include('./partials/footer.ejs') %>
+    </body>
+    <%- include('./partials/footer.ejs') %>
